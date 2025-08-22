@@ -1,171 +1,319 @@
 import Link from "next/link";
-import { FileText, Shield, BarChart3, Zap, Globe, Lock } from "lucide-react";
+import { FileText, Shield, BarChart3, Zap, Globe, Lock, ArrowRight, Play, Star } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative">
-      {/* Background with animated gradients */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20"></div>
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    <main className="min-h-screen bg-black text-white overflow-hidden">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 backdrop-blur-xl bg-black/80 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg"></div>
+              <span className="text-xl font-bold">LinkForge</span>
+            </div>
+            <div className="hidden md:flex items-center gap-8">
+              <a href="#features" className="text-gray-400 hover:text-white transition-colors">Features</a>
+              <a href="#pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</a>
+              <a href="#docs" className="text-gray-400 hover:text-white transition-colors">Docs</a>
+              <Link href="/sign-in" className="text-gray-400 hover:text-white transition-colors">Sign In</Link>
+              <Link href="/dashboard" className="bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                Start Building
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Grid Background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20"></div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 min-h-screen flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="text-center">
-            {/* Glass badge */}
-            <div className="inline-flex items-center gap-2 backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 text-gray-800 dark:text-gray-200 px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-lg">
-              <Zap className="w-4 h-4" />
-              Lightning Fast URL Shortening
-            </div>
+      <section className="relative pt-32 pb-20 px-6">
+        <div className="max-w-7xl mx-auto text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300 mb-8">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            Trusted by 10,000+ developers
+          </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              Shorten URLs with
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Analytics</span>
-            </h1>
+          {/* Main Heading */}
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-none">
+            Deploy your
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
+              short links
+            </span>
+            <br />
+            instantly
+          </h1>
 
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Create powerful short links with password protection, expiry dates, and detailed analytics.
-              Track clicks, geography, and user behavior in real-time.
-            </p>
+          <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+            Built for modern teams. Create, manage, and analyze short links with enterprise-grade security, 
+            real-time analytics, and lightning-fast global CDN.
+          </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                href="/dashboard"
-                className="group inline-flex items-center gap-2 backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 text-gray-800 dark:text-gray-200 hover:bg-white/30 dark:hover:bg-black/30 font-semibold px-8 py-4 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
-              >
-                <BarChart3 className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                Get Started Free
-              </Link>
-              <Link
-                href="/sign-in"
-                className="group inline-flex items-center gap-2 backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/5 text-gray-700 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-black/20 font-semibold px-8 py-4 rounded-2xl text-lg transition-all duration-300 hover:scale-105 shadow-lg"
-              >
-                <Globe className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                Sign In
-              </Link>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+            <Link
+              href="/dashboard"
+              className="group bg-white text-black px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 flex items-center gap-2"
+            >
+              Start for Free
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <button className="group bg-white/10 border border-white/20 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2">
+              <Play className="w-5 h-5" />
+              Watch Demo
+            </button>
+          </div>
+
+          {/* Dashboard Preview */}
+          <div className="relative max-w-5xl mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-3xl"></div>
+            <div className="relative bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+              </div>
+              <div className="space-y-4">
+                <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-gray-400 text-sm">Original URL</span>
+                    <span className="text-green-400 text-sm">Active</span>
+                  </div>
+                  <div className="text-white font-mono">https://example.com/very-long-url...</div>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-gray-400 text-sm">Short URL</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-purple-400 text-sm">42.1k clicks</span>
+                      <button className="text-gray-400 hover:text-white">Copy</button>
+                    </div>
+                  </div>
+                  <div className="text-purple-400 font-mono">linkforge.co/abc123</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Everything you need for powerful link management
+      <section id="features" className="relative py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Everything you need to scale
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-200 max-w-2xl mx-auto">
-              Professional URL shortening with enterprise-grade features and insights
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Enterprise-grade infrastructure with developer-friendly tools
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="group backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 rounded-3xl p-8 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-              <div className="w-14 h-14 backdrop-blur-md bg-blue-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+            {[
+              {
+                icon: Zap,
+                title: "Lightning Fast",
+                description: "Global CDN ensures your short links redirect in milliseconds worldwide",
+                color: "from-yellow-400 to-orange-500"
+              },
+              {
+                icon: Shield,
+                title: "Enterprise Security",
+                description: "Password protection, expiry controls, and advanced access management",
+                color: "from-green-400 to-teal-500"
+              },
+              {
+                icon: BarChart3,
+                title: "Real-time Analytics",
+                description: "Track performance with detailed insights on clicks, geography, and devices",
+                color: "from-purple-400 to-pink-500"
+              },
+              {
+                icon: Globe,
+                title: "Global Infrastructure",
+                description: "99.99% uptime with servers in 20+ regions for optimal performance",
+                color: "from-blue-400 to-cyan-500"
+              },
+              {
+                icon: Lock,
+                title: "Access Control",
+                description: "Granular permissions, team management, and audit logs for compliance",
+                color: "from-red-400 to-pink-500"
+              },
+              {
+                icon: FileText,
+                title: "Developer API",
+                description: "RESTful API with comprehensive documentation and SDKs for all platforms",
+                color: "from-indigo-400 to-purple-500"
+              }
+            ].map((feature, index) => (
+              <div key={index} className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500"></div>
+                <div className="relative bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300">
+                  <div className={`w-12 h-12 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center mb-6`}>
+                    <feature.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Lightning Fast
-              </h3>
-              <p className="text-gray-700 dark:text-gray-200">
-                Create short links instantly with our optimized platform. No waiting, no delays.
-              </p>
-            </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Feature 2 */}
-            <div className="group backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 rounded-3xl p-8 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-              <div className="w-14 h-14 backdrop-blur-md bg-green-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-7 h-7 text-green-600 dark:text-green-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Password Protected
-              </h3>
-              <p className="text-gray-700 dark:text-gray-200">
-                Secure your links with custom passwords. Control who can access your content.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="group backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 rounded-3xl p-8 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-              <div className="w-14 h-14 backdrop-blur-md bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BarChart3 className="w-7 h-7 text-purple-600 dark:text-purple-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Detailed Analytics
-              </h3>
-              <p className="text-gray-700 dark:text-gray-200">
-                Track clicks, geography, devices, and user behavior with comprehensive insights.
-              </p>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="group backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 rounded-3xl p-8 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-              <div className="w-14 h-14 backdrop-blur-md bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Lock className="w-7 h-7 text-orange-600 dark:text-orange-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Expiry Control
-              </h3>
-              <p className="text-gray-700 dark:text-gray-200">
-                Set expiration dates for your links. Automatically disable old or outdated content.
-              </p>
-            </div>
-
-            {/* Feature 5 */}
-            <div className="group backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 rounded-3xl p-8 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-              <div className="w-14 h-14 backdrop-blur-md bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <FileText className="w-7 h-7 text-indigo-600 dark:text-indigo-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Custom Slugs
-              </h3>
-              <p className="text-gray-700 dark:text-gray-200">
-                Create memorable, branded short URLs that are easy to remember and share.
-              </p>
-            </div>
-
-            {/* Feature 6 */}
-            <div className="group backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 rounded-3xl p-8 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-              <div className="w-14 h-14 backdrop-blur-md bg-pink-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Globe className="w-7 h-7 text-pink-600 dark:text-pink-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                Global Access
-              </h3>
-              <p className="text-gray-700 dark:text-gray-200">
-                Access your dashboard from anywhere. Manage links on desktop, tablet, or mobile.
-              </p>
+      {/* Stats Section */}
+      <section className="relative py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 backdrop-blur-xl border border-white/10 rounded-3xl p-12">
+            <div className="grid md:grid-cols-4 gap-8 text-center">
+              {[
+                { number: "10M+", label: "Links Created" },
+                { number: "500M+", label: "Clicks Tracked" },
+                { number: "99.99%", label: "Uptime" },
+                { number: "20ms", label: "Avg Response" }
+              ].map((stat, index) => (
+                <div key={index}>
+                  <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-400">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="backdrop-blur-md bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-white/30 dark:border-white/10 rounded-3xl p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              Ready to transform your link management?
-            </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
-              Join thousands of users who trust our platform for their URL shortening needs.
-            </p>
+      {/* Testimonials */}
+      <section className="relative py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Trusted by industry leaders</h2>
+            <p className="text-gray-400 text-lg">See what our customers are saying</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                quote: "LinkForge transformed how we manage our marketing campaigns. The analytics are incredible.",
+                author: "Sarah Chen",
+                role: "Head of Marketing at TechCorp",
+                rating: 5
+              },
+              {
+                quote: "The API is so clean and well-documented. Integration took us less than 30 minutes.",
+                author: "Mike Rodriguez",
+                role: "Lead Developer at StartupXYZ",
+                rating: 5
+              },
+              {
+                quote: "Finally, a URL shortener that doesn't compromise on security or performance.",
+                author: "Alex Johnson",
+                role: "DevOps Engineer at ScaleInc",
+                rating: 5
+              }
+            ].map((testimonial, index) => (
+              <div key={index} className="bg-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="text-gray-300 mb-6 italic">"{testimonial.quote}"</blockquote>
+                <div>
+                  <div className="font-semibold">{testimonial.author}</div>
+                  <div className="text-gray-400 text-sm">{testimonial.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="relative py-32 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8">
+            Ready to ship faster?
+          </h2>
+          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+            Join thousands of developers who trust LinkForge to power their applications
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/dashboard"
-              className="group inline-flex items-center gap-2 backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 text-gray-800 dark:text-gray-200 hover:bg-white/30 dark:hover:bg-black/30 font-semibold px-8 py-4 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
+              className="group bg-white text-black px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <BarChart3 className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-              Start Creating Links
+              Start Building Today
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-white/10 border border-white/20 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300"
+            >
+              Talk to Sales
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t border-white/10 py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg"></div>
+                <span className="text-xl font-bold">LinkForge</span>
+              </div>
+              <p className="text-gray-400">The modern URL shortener for developers</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Product</h4>
+              <div className="space-y-2 text-gray-400">
+                <div>Features</div>
+                <div>Pricing</div>
+                <div>API</div>
+                <div>Status</div>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Company</h4>
+              <div className="space-y-2 text-gray-400">
+                <div>About</div>
+                <div>Blog</div>
+                <div>Careers</div>
+                <div>Contact</div>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Resources</h4>
+              <div className="space-y-2 text-gray-400">
+                <div>Documentation</div>
+                <div>Support</div>
+                <div>Privacy</div>
+                <div>Terms</div>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div className="text-gray-400">© 2025 LinkForge. All rights reserved.</div>
+            <div className="flex items-center gap-6 text-gray-400">
+              <div>Privacy Policy</div>
+              <div>Terms of Service</div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
