@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import { FileText, Shield, BarChart3, Zap, Globe, Lock, ArrowRight, Play, Star } from "lucide-react";
 
@@ -25,11 +27,151 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Grid Background */}
+      {/* Animated Background */}
       <div className="fixed inset-0 z-0">
+        {/* Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20"></div>
+        
+        {/* Floating Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float-slow opacity-30"></div>
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-float-medium opacity-25" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float-fast opacity-20" style={{animationDelay: '4s'}}></div>
+        
+        {/* Moving Lines */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-purple-500/20 to-transparent animate-line-vertical-1" style={{left: '10%'}}></div>
+          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-pink-500/20 to-transparent animate-line-vertical-2" style={{left: '25%', animationDelay: '1.5s'}}></div>
+          <div className="absolute w-px h-full bg-gradient-to-b from-transparent via-blue-500/20 to-transparent animate-line-vertical-3" style={{left: '75%', animationDelay: '3s'}}></div>
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent animate-line-horizontal-1" style={{top: '20%'}}></div>
+          <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-pink-500/20 to-transparent animate-line-horizontal-2" style={{top: '60%', animationDelay: '2.5s'}}></div>
+        </div>
+        
+        {/* Particles */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 50 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white/10 rounded-full animate-particle opacity-20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 10}s`,
+                animationDuration: `${15 + Math.random() * 10}s`
+              }}
+            ></div>
+          ))}
+        </div>
       </div>
+
+      {/* Custom Styles */}
+      <style jsx>{`
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+          25% { transform: translateY(-20px) translateX(10px) rotate(90deg); }
+          50% { transform: translateY(0px) translateX(20px) rotate(180deg); }
+          75% { transform: translateY(20px) translateX(10px) rotate(270deg); }
+        }
+        
+        @keyframes float-medium {
+          0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+          33% { transform: translateY(-30px) translateX(-15px) rotate(120deg); }
+          66% { transform: translateY(15px) translateX(25px) rotate(240deg); }
+        }
+        
+        @keyframes float-fast {
+          0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+          20% { transform: translateY(-25px) translateX(15px) rotate(72deg); }
+          40% { transform: translateY(-10px) translateX(-20px) rotate(144deg); }
+          60% { transform: translateY(20px) translateX(10px) rotate(216deg); }
+          80% { transform: translateY(5px) translateX(-15px) rotate(288deg); }
+        }
+        
+        @keyframes line-vertical-1 {
+          0% { transform: translateY(-100vh) scaleY(0); }
+          50% { transform: translateY(0vh) scaleY(1); }
+          100% { transform: translateY(100vh) scaleY(0); }
+        }
+        
+        @keyframes line-vertical-2 {
+          0% { transform: translateY(-100vh) scaleY(0); }
+          50% { transform: translateY(0vh) scaleY(1); }
+          100% { transform: translateY(100vh) scaleY(0); }
+        }
+        
+        @keyframes line-vertical-3 {
+          0% { transform: translateY(-100vh) scaleY(0); }
+          50% { transform: translateY(0vh) scaleY(1); }
+          100% { transform: translateY(100vh) scaleY(0); }
+        }
+        
+        @keyframes line-horizontal-1 {
+          0% { transform: translateX(-100vw) scaleX(0); }
+          50% { transform: translateX(0vw) scaleX(1); }
+          100% { transform: translateX(100vw) scaleX(0); }
+        }
+        
+        @keyframes line-horizontal-2 {
+          0% { transform: translateX(-100vw) scaleX(0); }
+          50% { transform: translateX(0vw) scaleX(1); }
+          100% { transform: translateX(100vw) scaleX(0); }
+        }
+        
+        @keyframes particle {
+          0% { 
+            transform: translateY(0px) translateX(0px) scale(0);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.2;
+            transform: scale(1);
+          }
+          90% {
+            opacity: 0.2;
+          }
+          100% { 
+            transform: translateY(-100px) translateX(50px) scale(0);
+            opacity: 0;
+          }
+        }
+        
+        .animate-float-slow {
+          animation: float-slow 20s ease-in-out infinite;
+        }
+        
+        .animate-float-medium {
+          animation: float-medium 15s ease-in-out infinite;
+        }
+        
+        .animate-float-fast {
+          animation: float-fast 12s ease-in-out infinite;
+        }
+        
+        .animate-line-vertical-1 {
+          animation: line-vertical-1 8s linear infinite;
+        }
+        
+        .animate-line-vertical-2 {
+          animation: line-vertical-2 10s linear infinite;
+        }
+        
+        .animate-line-vertical-3 {
+          animation: line-vertical-3 12s linear infinite;
+        }
+        
+        .animate-line-horizontal-1 {
+          animation: line-horizontal-1 14s linear infinite;
+        }
+        
+        .animate-line-horizontal-2 {
+          animation: line-horizontal-2 16s linear infinite;
+        }
+        
+        .animate-particle {
+          animation: particle linear infinite;
+        }
+      `}</style>
+
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6">
