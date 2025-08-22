@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { FileText, Shield, BarChart3, Zap, Globe, Lock, ArrowRight, Play, Star } from "lucide-react";
-import Pricing from "./pricing/page";
-import Docs from "./document/page";
+
 
 export default function Home() {
   return (
