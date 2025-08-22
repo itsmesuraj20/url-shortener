@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { FileText, Shield, BarChart3, Zap, Globe, Lock, ArrowRight, Play, Star } from "lucide-react";
+import Pricing from "./pricing/page";
+import Docs from "./document/page";
 
 export default function Home() {
   return (
@@ -16,8 +18,8 @@ export default function Home() {
             </div>
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-gray-400 hover:text-white transition-colors">Features</a>
-              <a href="#pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</a>
-              <a href="#docs" className="text-gray-400 hover:text-white transition-colors">Docs</a>
+              <a href="/pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</a>
+              <a href="/document" className="text-gray-400 hover:text-white transition-colors">Docs</a>
               <Link href="/sign-in" className="text-gray-400 hover:text-white transition-colors">Sign In</Link>
               <Link href="/dashboard" className="bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors">
                 Start Building
