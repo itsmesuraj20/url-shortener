@@ -25,22 +25,22 @@ export function Header() {
                     </button>
                     {session?.user ? (
                         <>
-                            <Link 
-                                href="/dashboard" 
+                            <Link
+                                href="/dashboard"
                                 className="backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 rounded-xl px-4 py-2 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-300"
                             >
                                 Dashboard
                             </Link>
-                            <button 
-                                onClick={() => signOut({ callbackUrl: "/" })} 
+                            <button
+                                onClick={() => signOut({ callbackUrl: "/" })}
                                 className="backdrop-blur-md bg-red-500/20 border border-red-300/30 text-red-700 dark:text-red-300 rounded-xl px-4 py-2 hover:bg-red-500/30 transition-all duration-300"
                             >
                                 Sign out
                             </button>
                         </>
                     ) : (
-                        <Link 
-                            href="/sign-in" 
+                        <Link
+                            href="/sign-in"
                             className="backdrop-blur-md bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-300/30 dark:border-blue-500/30 text-blue-700 dark:text-blue-300 rounded-xl px-6 py-2 hover:from-blue-600/30 hover:to-purple-600/30 transition-all duration-300"
                         >
                             Sign in

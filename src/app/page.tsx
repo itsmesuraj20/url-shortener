@@ -21,27 +21,27 @@ export default function Home() {
               <Zap className="w-4 h-4" />
               Lightning Fast URL Shortening
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               Shorten URLs with
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Analytics</span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Create powerful short links with password protection, expiry dates, and detailed analytics. 
+              Create powerful short links with password protection, expiry dates, and detailed analytics.
               Track clicks, geography, and user behavior in real-time.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link 
-                href="/dashboard" 
+              <Link
+                href="/dashboard"
                 className="group inline-flex items-center gap-2 backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 text-gray-800 dark:text-gray-200 hover:bg-white/30 dark:hover:bg-black/30 font-semibold px-8 py-4 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
               >
                 <BarChart3 className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
                 Get Started Free
               </Link>
-              <Link 
-                href="/sign-in" 
+              <Link
+                href="/sign-in"
                 className="group inline-flex items-center gap-2 backdrop-blur-md bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/5 text-gray-700 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-black/20 font-semibold px-8 py-4 rounded-2xl text-lg transition-all duration-300 hover:scale-105 shadow-lg"
               >
                 <Globe className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
@@ -63,7 +63,7 @@ export default function Home() {
               Professional URL shortening with enterprise-grade features and insights
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature 1 */}
             <div className="group backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 rounded-3xl p-8 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
@@ -156,8 +156,8 @@ export default function Home() {
             <p className="text-xl text-gray-700 dark:text-gray-200 mb-8">
               Join thousands of users who trust our platform for their URL shortening needs.
             </p>
-            <Link 
-              href="/dashboard" 
+            <Link
+              href="/dashboard"
               className="group inline-flex items-center gap-2 backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/10 text-gray-800 dark:text-gray-200 hover:bg-white/30 dark:hover:bg-black/30 font-semibold px-8 py-4 rounded-2xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
             >
               <BarChart3 className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
