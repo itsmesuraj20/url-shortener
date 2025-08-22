@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "seed": "tsx prisma/seed.ts",
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "migrate:deploy": "prisma migrate deploy",
     "test": "vitest run",
     "test:ui": "vitest"
   },

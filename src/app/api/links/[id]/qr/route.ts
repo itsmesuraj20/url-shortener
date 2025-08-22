@@ -1,8 +1,9 @@
 import { prisma } from "@/lib/db";
 import QRCode from "qrcode";
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
-    const link = await prisma.link.findUnique({ where: { id: params.id } });
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    const link = await prisma.link.findUnique({ where: { id } });
     if (!link) return new Response("not_found", { status: 404 });
     const { searchParams } = new URL(req.url);
     const format = searchParams.get("format") === "svg" ? "svg" : "png";
@@ -12,7 +13,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
         return new Response(svg, { headers: { "content-type": "image/svg+xml" } });
     }
     const png = await QRCode.toBuffer(url, { type: "png", width: 512 });
-    return new Response(png, { headers: { "content-type": "image/png" } });
+    return new Response(new Uint8Array(png), { headers: { "content-type": "image/png" } });
 }
 
 

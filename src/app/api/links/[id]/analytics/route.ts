@@ -11,10 +11,11 @@ function startDate(range: string | null): Date {
     return d;
 }
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
     const session = await getServerAuthSession();
     if (!session?.user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-    const link = await prisma.link.findUnique({ where: { id: params.id } });
+    const link = await prisma.link.findUnique({ where: { id } });
     if (!link) return NextResponse.json({ error: "not_found" }, { status: 404 });
     if (link.userId && link.userId !== (session.user.id as string))
         return NextResponse.json({ error: "forbidden" }, { status: 403 });

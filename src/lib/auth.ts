@@ -17,6 +17,10 @@ export const authOptions: NextAuthOptions = {
     session: { strategy: "jwt" },
     providers: [
         Credentials({
+            credentials: {
+                email: { label: "Email", type: "email" },
+                password: { label: "Password", type: "password" }
+            },
             authorize: async (raw) => {
                 const parsed = credentialsSchema.safeParse(raw);
                 if (!parsed.success) return null;

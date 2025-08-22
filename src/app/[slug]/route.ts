@@ -4,8 +4,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { UAParser } from "ua-parser-js";
 import { hashIp } from "@/lib/crypto";
 
-export async function GET(req: NextRequest, { params }: { params: { slug: string } }) {
-    const slug = params.slug;
+export async function GET(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     if (!slug) return NextResponse.next();
 
     const resolveRes = await fetch(new URL(`/api/resolve?slug=${encodeURIComponent(slug)}`, req.url));
@@ -20,10 +20,10 @@ export async function GET(req: NextRequest, { params }: { params: { slug: string
         }
     }
 
-    const ip = req.ip ?? req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "0.0.0.0";
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "0.0.0.0";
     const ua = req.headers.get("user-agent") ?? "";
     const ref = req.headers.get("referer") ?? undefined;
-    const country = req.geo?.country ?? req.headers.get("x-vercel-ip-country") ?? undefined;
+    const country = req.headers.get("x-vercel-ip-country") ?? undefined;
     const ipHash = hashIp(ip, ua);
 
     try {

@@ -13,13 +13,14 @@ const updateSchema = z.object({
     active: z.boolean().optional(),
 });
 
-export async function PATCH(_req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
     const session = await getServerAuthSession();
     if (!session?.user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
     const body = await _req.json().catch(() => null);
     const parsed = updateSchema.safeParse(body);
     if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
-    const link = await prisma.link.findUnique({ where: { id: params.id } });
+    const link = await prisma.link.findUnique({ where: { id } });
     if (!link) return NextResponse.json({ error: "not_found" }, { status: 404 });
     if (link.userId && link.userId !== (session.user.id as string))
         return NextResponse.json({ error: "forbidden" }, { status: 403 });
@@ -38,20 +39,21 @@ export async function PATCH(_req: Request, { params }: { params: { id: string } 
         data.slug = parsed.data.slug;
     }
 
-    const updated = await prisma.link.update({ where: { id: params.id }, data });
+    const updated = await prisma.link.update({ where: { id }, data });
     await cacheDel(`slug:${link.slug}`);
     if (data.slug) await cacheDel(`slug:${data.slug}`);
     return NextResponse.json(updated);
 }
 
-export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
     const session = await getServerAuthSession();
     if (!session?.user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-    const link = await prisma.link.findUnique({ where: { id: params.id } });
+    const link = await prisma.link.findUnique({ where: { id } });
     if (!link) return NextResponse.json({ error: "not_found" }, { status: 404 });
     if (link.userId && link.userId !== (session.user.id as string))
         return NextResponse.json({ error: "forbidden" }, { status: 403 });
-    const deleted = await prisma.link.update({ where: { id: params.id }, data: { active: false } });
+    const deleted = await prisma.link.update({ where: { id }, data: { active: false } });
     await cacheDel(`slug:${link.slug}`);
     return NextResponse.json(deleted);
 }

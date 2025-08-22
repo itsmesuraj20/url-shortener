@@ -31,10 +31,10 @@ export async function middleware(req: NextRequest) {
     }
 
     // De-dupe and dispatch event
-    const ip = req.ip ?? req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "0.0.0.0";
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "0.0.0.0";
     const ua = req.headers.get("user-agent") ?? "";
     const ref = req.headers.get("referer") ?? undefined;
-    const country = req.geo?.country ?? req.headers.get("x-vercel-ip-country") ?? undefined;
+    const country = req.headers.get("x-vercel-ip-country") ?? undefined;
     const ipHash = hashIp(ip, ua);
 
     const dedupeKey = `hit:${pathname}:${ipHash}`;
